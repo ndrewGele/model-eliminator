@@ -1,0 +1,14 @@
+name: GHCR CI
+
+on: push
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push image
+        run: |
+          docker login --username ndrewGele --password ${{ secrets.GH_PAT }} ghcr.io
+          docker build . --tag ghcr.io/ndrewgele/model-eliminator:latest
+          docker push ghcr.io/ndrewgele/model-eliminator:latest
