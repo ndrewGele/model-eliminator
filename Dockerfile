@@ -17,3 +17,5 @@ COPY ./ /code
 RUN R -e "renv::restore()"
 
 CMD ["Rscript", "main.R"]
+
+LABEL org.opencontainers.image.source https://github.com/ndrewgele/model-eliminator
